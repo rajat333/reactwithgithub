@@ -13,14 +13,14 @@ class PullRequest extends Component {
     }
 
     componentWillMount() {
-        console.log("..in component will mount");
+        // console.log("..in component will mount");
         this
             .props
             .getData();
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("component recieve props", nextProps);
+        // console.log("component recieve props", nextProps);
         const dataPart = nextProps.data;
         this.setState({data: dataPart});
     }
@@ -32,6 +32,13 @@ class PullRequest extends Component {
                     {
                         this.props.data
                             .map((eachObj, index) => {
+                              
+                              let oneDay = 24*60*60*1000;
+                              let firstDate = new Date( eachObj.created_at );
+                              let finalSecDate = new Date(eachObj.updated_at);
+                              var timeDiff = Math.abs(firstDate.getTime() - finalSecDate.getTime());
+                              var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                        
                                 return (
                                     <li className="list-group-item" key={index}>
                                         <Link to={`/${eachObj.number}`}>
@@ -42,7 +49,7 @@ class PullRequest extends Component {
 
                                         </Link>
                                         <span>
-                                            #{eachObj.number}{ " "} {eachObj.state} by {eachObj.user.login}
+                                            #{eachObj.number}{ " "} {eachObj.state} {  } ago by {eachObj.user.login} 
                                         </span>
                                     </li>
                                 )
@@ -55,12 +62,12 @@ class PullRequest extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("....state..registration...", state);
+    // console.log("....state..registration...", state);
     return {data: state.pulldata.data, error: state.pulldata.error};
 }
 
 const mapDispatchToProps = dispatch => {
-    console.log("...In mapDIspatchToProps....");
+    // console.log("...In mapDIspatchToProps....");
     return {
         getData: () => dispatch(userActions.getData()),
         // different func for performing action

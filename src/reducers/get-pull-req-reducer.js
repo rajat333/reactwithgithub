@@ -6,7 +6,7 @@ var intialState = {
     comments:[]
 }
 export const getPullReqReducer = (state = intialState, action) => {
-    console.log("..In reducer", action);
+    // console.log("..In reducer", action);
 
     switch (action.type) {
 
@@ -24,7 +24,15 @@ export const getPullReqReducer = (state = intialState, action) => {
                 comments:action.data,
                 data:[]
             }
-        }    
+        }
+        
+        case userConstant.FAILURE:
+          return{
+              ...state,
+              error:true,
+              comments:[],
+              data:[]
+          }
 
         default:
             return {

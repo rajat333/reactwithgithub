@@ -8,7 +8,7 @@ class GetComments extends Component {
     }
 
     componentWillMount(){
-        console.log("..in component GetComments",this.props);
+        // console.log("..in component GetComments",this.props);
         const pullNumber = this.props.match.params.id;
         this.props.getPullComments(pullNumber);
     }
@@ -42,14 +42,14 @@ class GetComments extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("....state..GetComments...", state);
+    // console.log("....state..GetComments...", state);
     return {
       comments: state.pulldata.comments,
     };
 }
 
 const mapDispatchToProps = dispatch => {
-    console.log("...In GetComments....");
+    // console.log("...In GetComments....");
     return {
         getPullComments:(id)=> dispatch( userActions.getPullComments(id)),
         // different func for performing action
