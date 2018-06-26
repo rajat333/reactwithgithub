@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { userActions } from "../../actions/user-actions";
+import { Link } from "react-router-dom";
 class PullRequest extends Component {
 
     constructor(props){
@@ -32,10 +33,16 @@ class PullRequest extends Component {
           this.state.data ? "welcome" :"Nt"
         }
         <ul>
+          inside ul 
         {
-          this.state.data.map( (eachObj,index)=>{
-             
-             <li key={ index }> { index } hi </li>
+          this.props.data.map( (eachObj,index)=>{
+            return (
+                  <li key={ index }><Link to={`/${eachObj.number}` } >{ eachObj.title }
+                  
+                  </Link> 
+                  <span> { eachObj.number }  </span>
+                  </li>
+              )
           })
         }
         </ul>
