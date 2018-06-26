@@ -3,6 +3,7 @@ import {userConstant } from "../constants/user-constant";
 var intialState = {
     error: false,
     data:[],
+    comments:[]
 }
 export const getPullReqReducer = (state = intialState, action) => {
     console.log("..In reducer", action);
@@ -15,6 +16,15 @@ export const getPullReqReducer = (state = intialState, action) => {
                 error: false,
                 data: action.data,
             }
+        
+        case userConstant.GETCOMMENTS:{
+            return{
+                ...state,
+                error:false,
+                comments:action.data,
+                data:[]
+            }
+        }    
 
         default:
             return {

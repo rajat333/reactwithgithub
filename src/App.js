@@ -6,6 +6,7 @@ import logo from './logo.svg';
 
 import './App.css';
 import PullRequest from './components/PullRequest/PullRequest';
+import GetComments from './components/GetComments/GetComments';
 
 class App extends Component {
   render() {
@@ -18,7 +19,7 @@ class App extends Component {
         <Router history={history}>
                     <div>
                         <Switch>
-                            <Route path="/pull" component={PullRequest}/>
+                            <Route path="/:id" component={ GetComments }/>
                            <Route component={PullRequest }/> 
                         </Switch>
 

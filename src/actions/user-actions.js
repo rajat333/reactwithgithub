@@ -15,9 +15,42 @@ var getData= ()=>(dispatch)=>{
               data: data,
           })
       })
+     .catch( error=>{
+          console.log("..error...");
+          dispatch({
+              type: userConstant.FAILURE,
+              error: true,
+          })
+     }) 
+}
+
+var getPullComments = (id)=>(dispatch)=>{
+    console.log("...in..getPullComments..",id);
+    console.log("...in..getPullComments..",id);
+    var url = "https://api.github.com/repos/facebook/react/issues/"+id+"/comments";
+    fetch(url)
+    .then( result =>{ 
+        return result.json()
+    })
+    .then( data =>{
+          console.log("...data.get comments..",data);
+          /// dispatch action here 
+          dispatch({
+              type: userConstant.GETCOMMENTS,
+              data: data,
+          })
+      })
+     .catch( error=>{
+          console.log("..error...");
+          dispatch({
+              type: userConstant.COMMENTFAILURE,
+              data: [],
+          })
+     }) 
 }
 
 export const userActions = {
 
     getData,
+    getPullComments,
 }
