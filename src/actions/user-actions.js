@@ -1,3 +1,4 @@
+import { userConstant } from "../constants/user-constant";
 
 var getData= ()=>(dispatch)=>{
 
@@ -7,8 +8,12 @@ var getData= ()=>(dispatch)=>{
         return result.json()
     })
     .then( data =>{
-          console.log("...data...");
+          console.log("...data...",data,userConstant);
           /// dispatch action here 
+          dispatch({
+              type: userConstant.GETPULLREQDATA,
+              data: data,
+          })
       })
 }
 

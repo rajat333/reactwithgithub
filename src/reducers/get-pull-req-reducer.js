@@ -1,4 +1,4 @@
-import {userConstants } from "../constants/user-constant";
+import {userConstant } from "../constants/user-constant";
 
 var intialState = {
     error: false,
@@ -9,11 +9,11 @@ export const getPullReqReducer = (state = intialState, action) => {
 
     switch (action.type) {
 
-        case userConstants.GETPULLREQDATA:
+        case userConstant.GETPULLREQDATA:
             return {
                 ...state,
                 error: false,
-                data:[],
+                data: action.data,
             }
 
         default:
