@@ -49,7 +49,7 @@ class PullRequest extends Component {
 
                                         </Link>
                                         <span>
-                                            #{eachObj.number}{ " "} {eachObj.state} {  } ago by {eachObj.user.login} 
+                                            #{eachObj.number}{ " "} {eachObj.state} { diffDays } ago by {eachObj.user.login} 
                                         </span>
                                     </li>
                                 )

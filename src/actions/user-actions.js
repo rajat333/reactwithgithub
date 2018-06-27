@@ -3,7 +3,7 @@ import { userConstant } from "../constants/user-constant";
 var getData= ()=>(dispatch)=>{
 
     // console.log("in func get data");
-    fetch("https://api.github.com/repos/facebook/react/pulls?state=all&&per_page=100")
+    fetch("https://api.github.com/repos/facebook/react/pulls?state=all&per_page=100&access_token=b35dfa2a89f8d6d77c636d57d7fdef0b5ef5aa65")
     .then( result =>{ 
         return result.json()
     })
