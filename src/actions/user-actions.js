@@ -20,6 +20,7 @@ var getData= ()=>(dispatch)=>{
           dispatch({
               type: userConstant.FAILURE,
               error: true,
+              data: [ { title:"Error in API"} ]
           })
      }) 
 }
@@ -27,7 +28,8 @@ var getData= ()=>(dispatch)=>{
 var getPullComments = (id)=>(dispatch)=>{
     // console.log("...in..getPullComments..",id);
     // console.log("...in..getPullComments..",id);
-    var url = "https://api.github.com/repos/facebook/react/issues/"+id+"/comments";
+    var url = "https://api.github.com/repos/facebook/react/issues/"+id+"/comments?access_token=b35dfa2a89f8d6d77c636d57d7fdef0b5ef5aa65";
+    var reviewCommentUrl= "https://api.github.com/repos/facebook/react/pulls/"+ id +"/comments?access_token=b35dfa2a89f8d6d77c636d57d7fdef0b5ef5aa65";
     fetch(url)
     .then( result =>{ 
         return result.json()

@@ -31,9 +31,16 @@ export const getPullReqReducer = (state = intialState, action) => {
               ...state,
               error:true,
               comments:[],
-              data:[]
+              data:action.data,
           }
-
+        
+        case userConstant.COMMENTFAILURE:
+            return{
+                ...state,
+                error: true,
+                comments: action.comments,
+                data: action.data,
+            }
         default:
             return {
                 ...state,

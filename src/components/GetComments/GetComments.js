@@ -15,8 +15,7 @@ class GetComments extends Component {
     render() {
         return (
         <div className="GetComments">
-            <p>Inside GET GetComments </p>
-            {   
+            {  !this.props.error ? (
                 this.props.comments.map( (obj,index)=>{
                     let oneDay = 24*60*60*1000;
                     let firstDate = new Date();
@@ -25,16 +24,16 @@ class GetComments extends Component {
                     var timeDiff = Math.abs(firstDate.getTime() - finalSecDate.getTime());
                     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
                
-                 return (
+                  return(
                      <div key={ index } className="" style={ {border:"1px solid black", backgroundColor:"white",marginBottom:"15px" } }>
                      <div style={ { backgroundColor:"#f6f8fa", color:"black", padding:"0 0px 20px 0"}}>
                       <strong>{ obj.user.login}</strong> <span>commented { diffDays} days ago </span>   
                      </div>  
                      <div style={{ margin:"20px 5px 20px 0px" }}> { obj.body }</div>
                      </div>
-                 )   
+                  )
 
-                })
+                })  ) :"Error Occur in API"
             }
         </div>
         );
@@ -42,9 +41,10 @@ class GetComments extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log("....state..GetComments...", state);
+    console.log("....state..GetComments...", state);
     return {
       comments: state.pulldata.comments,
+      error: state.pulldata.error,
     };
 }
 
